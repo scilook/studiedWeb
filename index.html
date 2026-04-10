@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Source Software</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f4f6f9;
+      color: #2c3e50;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+      color: #fff;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+    header p.subtitle {
+      font-size: 1.15rem;
+      opacity: 0.88;
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* ── Section cards ── */
+    section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+    }
+    section h2 {
+      font-size: 1.55rem;
+      color: #1a73e8;
+      border-left: 4px solid #1a73e8;
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    section p { margin-bottom: 0.9rem; }
+    section p:last-child { margin-bottom: 0; }
+
+    /* ── Four-freedom grid ── */
+    .freedoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .freedom-card {
+      background: #e8f0fe;
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+    }
+    .freedom-card .freedom-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a73e8;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .freedom-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .freedom-card p { font-size: 0.9rem; margin: 0; }
+
+    /* ── Examples table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    thead tr { background: #1a73e8; color: #fff; }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border: 1px solid #dce3f0;
+    }
+    tbody tr:nth-child(even) { background: #f0f4ff; }
+
+    /* ── Timeline (history) ── */
+    .timeline { margin-top: 1rem; }
+    .timeline-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.1rem;
+      align-items: flex-start;
+    }
+    .timeline-year {
+      min-width: 60px;
+      background: #1a73e8;
+      color: #fff;
+      border-radius: 20px;
+      text-align: center;
+      padding: 0.25rem 0.5rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .timeline-text { font-size: 0.95rem; padding-top: 0.15rem; }
+
+    /* ── Advantages / disadvantages ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+    .pro-con-box { border-radius: 8px; padding: 1.2rem 1.4rem; }
+    .pro-con-box.pros { background: #e6f4ea; }
+    .pro-con-box.cons { background: #fce8e6; }
+    .pro-con-box h3 { margin-bottom: 0.6rem; }
+    .pro-con-box h3.pros-title { color: #1e8e3e; }
+    .pro-con-box h3.cons-title { color: #d93025; }
+    .pro-con-box ul { padding-left: 1.3rem; }
+    .pro-con-box li { margin-bottom: 0.4rem; font-size: 0.93rem; }
+
+    /* ── Licenses section ── */
+    .license-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+    .license-tag {
+      background: #e8f0fe;
+      color: #1a73e8;
+      border: 1px solid #aac4f7;
+      border-radius: 20px;
+      padding: 0.35rem 0.95rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: #6b7a8d;
+      font-size: 0.85rem;
+      padding: 1.5rem 1rem 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🖥️ Open Source Software</h1>
+  <p class="subtitle">A complete introduction to the class — concepts, history, licenses, and examples</p>
+</header>
+
+<main>
+
+  <!-- 1. Definition -->
+  <section>
+    <h2>📖 What is Open Source Software?</h2>
+    <p>
+      <strong>Open Source Software (OSS)</strong> is software whose <em>source code</em> is made publicly available
+      for anyone to view, use, modify, and distribute. Unlike proprietary software, there are no hidden
+      restrictions on studying how the program works or sharing improvements with others.
+    </p>
+    <p>
+      The term was coined in 1998 by the <em>Open Source Initiative (OSI)</em>, which also maintains the
+      official definition and approves licenses that meet its criteria.
+    </p>
+  </section>
+
+  <!-- 2. The Four Freedoms -->
+  <section>
+    <h2>🗽 The Four Essential Freedoms</h2>
+    <p>
+      The <strong>Free Software Foundation (FSF)</strong> defines free (as in freedom) software through
+      four fundamental freedoms that users must have:
+    </p>
+    <div class="freedoms-grid">
+      <div class="freedom-card">
+        <div class="freedom-number">0</div>
+        <h3>Run</h3>
+        <p>Use the program for any purpose, without restrictions.</p>
+      </div>
+      <div class="freedom-card">
+        <div class="freedom-number">1</div>
+        <h3>Study</h3>
+        <p>Examine how the program works and adapt it to your needs.</p>
+      </div>
+      <div class="freedom-card">
+        <div class="freedom-number">2</div>
+        <h3>Redistribute</h3>
+        <p>Share copies to help others in your community.</p>
+      </div>
+      <div class="freedom-card">
+        <div class="freedom-number">3</div>
+        <h3>Improve</h3>
+        <p>Modify and distribute your improvements so the whole community benefits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. History -->
+  <section>
+    <h2>🕰️ A Brief History</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-year">1969</span>
+        <span class="timeline-text">AT&amp;T Bell Labs creates <strong>Unix</strong>; source code is shared freely among universities.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1983</span>
+        <span class="timeline-text">Richard Stallman launches the <strong>GNU Project</strong> to create a free Unix-like OS.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1985</span>
+        <span class="timeline-text">The <strong>GNU Manifesto</strong> is published, articulating the philosophy of free software.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1991</span>
+        <span class="timeline-text">Linus Torvalds releases the <strong>Linux kernel</strong>, which combines with GNU tools.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">1998</span>
+        <span class="timeline-text">The <strong>Open Source Initiative (OSI)</strong> is founded; the term "open source" is formalized.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2005</span>
+        <span class="timeline-text">Linus Torvalds creates <strong>Git</strong>, powering modern open-source collaboration.</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2008</span>
+        <span class="timeline-text"><strong>GitHub</strong> launches, dramatically accelerating global OSS participation.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Common Licenses -->
+  <section>
+    <h2>📜 Common Open Source Licenses</h2>
+    <p>
+      A license defines the rights and obligations attached to an open-source project.
+      Common OSI-approved licenses include:
+    </p>
+    <div class="license-tags">
+      <span class="license-tag">MIT</span>
+      <span class="license-tag">Apache 2.0</span>
+      <span class="license-tag">GNU GPL v3</span>
+      <span class="license-tag">GNU LGPL v3</span>
+      <span class="license-tag">Mozilla Public License 2.0</span>
+      <span class="license-tag">BSD 2-Clause</span>
+      <span class="license-tag">BSD 3-Clause</span>
+      <span class="license-tag">ISC</span>
+      <span class="license-tag">Eclipse Public License 2.0</span>
+      <span class="license-tag">Creative Commons (CC0)</span>
+    </div>
+    <p style="margin-top:1rem;">
+      Licenses range from <em>permissive</em> (MIT, Apache) — which allow proprietary derivatives — to
+      <em>copyleft</em> (GPL) — which require derivative works to be released under the same terms.
+    </p>
+  </section>
+
+  <!-- 5. Well-known Examples -->
+  <section>
+    <h2>💡 Well-Known Open Source Examples</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Category</th>
+          <th>License</th>
+          <th>Notable Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Linux</strong></td>
+          <td>Operating System Kernel</td>
+          <td>GPL v2</td>
+          <td>Servers, Android, embedded devices</td>
+        </tr>
+        <tr>
+          <td><strong>Firefox</strong></td>
+          <td>Web Browser</td>
+          <td>MPL 2.0</td>
+          <td>Privacy-focused browsing</td>
+        </tr>
+        <tr>
+          <td><strong>Python</strong></td>
+          <td>Programming Language</td>
+          <td>PSF License</td>
+          <td>Data science, AI, web development</td>
+        </tr>
+        <tr>
+          <td><strong>VS Code</strong></td>
+          <td>Code Editor</td>
+          <td>MIT</td>
+          <td>Widely used development IDE</td>
+        </tr>
+        <tr>
+          <td><strong>Git</strong></td>
+          <td>Version Control</td>
+          <td>GPL v2</td>
+          <td>Source code management worldwide</td>
+        </tr>
+        <tr>
+          <td><strong>WordPress</strong></td>
+          <td>CMS / Blog Platform</td>
+          <td>GPL v2</td>
+          <td>Powers ~40% of all websites</td>
+        </tr>
+        <tr>
+          <td><strong>VLC</strong></td>
+          <td>Media Player</td>
+          <td>LGPL / GPL v2</td>
+          <td>Universal media playback</td>
+        </tr>
+        <tr>
+          <td><strong>Apache HTTP Server</strong></td>
+          <td>Web Server</td>
+          <td>Apache 2.0</td>
+          <td>Foundation of the modern web</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6. Advantages & Disadvantages -->
+  <section>
+    <h2>⚖️ Advantages &amp; Disadvantages</h2>
+    <div class="two-col">
+      <div class="pro-con-box pros">
+        <h3 class="pros-title">✅ Advantages</h3>
+        <ul>
+          <li>Free to use — no licensing cost</li>
+          <li>Transparent and auditable code</li>
+          <li>Large community support &amp; collaboration</li>
+          <li>Rapid bug fixes and security patches</li>
+          <li>No vendor lock-in</li>
+          <li>Encourages learning and innovation</li>
+          <li>Customizable to specific needs</li>
+        </ul>
+      </div>
+      <div class="pro-con-box cons">
+        <h3 class="cons-title">⚠️ Disadvantages</h3>
+        <ul>
+          <li>May lack professional support</li>
+          <li>Steeper learning curve for some tools</li>
+          <li>Inconsistent documentation quality</li>
+          <li>Potential license compatibility issues</li>
+          <li>Projects can be abandoned (unmaintained)</li>
+          <li>User experience sometimes lower priority</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. How to Contribute -->
+  <section>
+    <h2>🤝 How to Contribute to Open Source</h2>
+    <p>
+      Anyone can participate in open source. Here are common ways to get involved:
+    </p>
+    <ol style="padding-left: 1.4rem;">
+      <li style="margin-bottom:.6rem;"><strong>Report bugs</strong> — Open issues in the project's issue tracker.</li>
+      <li style="margin-bottom:.6rem;"><strong>Write documentation</strong> — Improve README files, wikis, or tutorials.</li>
+      <li style="margin-bottom:.6rem;"><strong>Submit pull requests</strong> — Propose code fixes or new features.</li>
+      <li style="margin-bottom:.6rem;"><strong>Review pull requests</strong> — Give feedback on others' contributions.</li>
+      <li style="margin-bottom:.6rem;"><strong>Translate</strong> — Localize software into other languages.</li>
+      <li><strong>Sponsor</strong> — Financially support maintainers through platforms like GitHub Sponsors.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <p>Studied Web — Open Source Software Class &bull; Created for educational purposes</p>
+</footer>
+
+</body>
+</html>
